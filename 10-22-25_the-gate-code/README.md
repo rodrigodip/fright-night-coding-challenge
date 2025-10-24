@@ -1,4 +1,4 @@
-## The gate code
+# The gate code
 It was a perfectly miserable autumn day: rain, gray skies, and your boss’s reluctant blessing to “enjoy” two whole vacation days. Not enough for the beach, but enough to visit your old uncle. He lives in the middle of nowhere, and you've been too busy to even make a birthday call.
 
 You packed light: clothes, essentials, and your old laptop — because nothing says rest like checking emails in the woods. The car was supposed to get you there by midnight.

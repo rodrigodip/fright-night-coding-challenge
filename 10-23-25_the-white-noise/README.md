@@ -1,4 +1,4 @@
-## The white noise
+# The white noise
 The gate creaked open like it hadn't been touched since the dawn of the last century. You stepped inside.
 
 The mansion was silent. Too silent. Except for the steady drip of rain through a cracked ceiling. Your eyes ran over countless corners and door frames, scanning for danger signs. Nothing. At least, nothing a human sight could process through the dust with a little help from the dim light.
