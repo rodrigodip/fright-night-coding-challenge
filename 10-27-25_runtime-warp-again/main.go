@@ -16,26 +16,44 @@ func main() {
 		return
 	}
 	coords := parseDataSet(file)
-	fmt.Println("Instructions:", coords)
+	//fmt.Println(coords)
+	var answer int
+	for i := 0; i < len(coords); i++ {
+		if len(coords[i+1]) != 4 {
+			break
+		}
+		sum, err := EuclideanDistance4D(coords[i], coords[i+1])
+		if err != nil {
+			fmt.Println("euclidian error")
+		}
+		answer = answer + int(sum)
+	}
+	fmt.Println(answer)
 }
 func parseDataSet(file []byte) [][]float64 {
 	output := make([][]float64, 0)
-	var number []float64
-	for instructions := range strings.SplitSeq(string(file), "\n") {
-		lvl2 := strings.Split(instructions, " ")
-		for _, n := range lvl2 {
-			parsed := strings.Fields(n)
-			for _, m := range parsed {
-				f, err := strconv.ParseFloat(m, 64)
-				if err != nil {
-					panic(err)
-				}
-				fmt.Print(f)
-			}
-			output = append(output, number)
-		}
+	for coordSlice := range strings.SplitSeq(string(file), "\n") {
+		seq := strings.Split(coordSlice, ",")
+		parsed := stringToFloat(seq)
+		output = append(output, parsed)
 	}
 	return output
+}
+func stringToFloat(s []string) []float64 {
+	result := make([]float64, len(s))
+	for i, str := range s {
+		if len(s) != 4 {
+			break
+		}
+		flt, err := strconv.ParseFloat(str, 64)
+		if err != nil {
+			fmt.Println("Error converting string to float64:", err)
+		}
+		//fmt.Printf("string: %v ,Type: %T\n", str, str)
+		//fmt.Printf("float: %v ,Type: %T\n", flt, flt)
+		result[i] = flt
+	}
+	return result
 }
 func EuclideanDistance4D(p1, p2 []float64) (float64, error) {
 	if len(p1) != 4 || len(p2) != 4 {
@@ -45,5 +63,5 @@ func EuclideanDistance4D(p1, p2 []float64) (float64, error) {
 	dy := p2[1] - p1[1]
 	dz := p2[2] - p1[2]
 	dw := p2[3] - p1[3]
-	return math.Sqrt(dx*dx + dy*dy + dz*dz + dw*dw), nil
+	return math.Ceil(math.Sqrt(dx*dx + dy*dy + dz*dz + dw*dw)), nil
 }
